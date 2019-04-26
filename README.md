@@ -3,8 +3,8 @@
 
 <h5> Super admin </h5> 
 
-email : ismailghallou@hotmail.com<br>
-password : ismail
+email : thang@mail.com<br>
+password : thang
 
 <h5>  some users </h5> 
 
