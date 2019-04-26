@@ -51,9 +51,9 @@ error_reporting(0);
         <div class="input-field col s6">
           <select class="icons" name="country">
       <option value=""  disabled selected>Choose your country</option>
-      <option value="Morocco">Morocco</option>
-      <option value="Egypt">Egypt</option>
-      <option value="Algeria">Algeria</option>
+      <option value="Vietnam">Vietnam</option>
+      <option value="Laos">Laos</option>
+      <option value="Nuwngs">Nuwngs</option>
     </select>
     <label>Country</label>
         </div>
