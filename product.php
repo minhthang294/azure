@@ -23,7 +23,7 @@ $id_product =$_GET['id'];
         <div class="nav-wrapper">
           <div class="col s12">
             <a href="index" class="breadcrumb">Home</a>
-            <a href="product.php?id=<? $id_product; ?>" class="breadcrumb">Product</a>
+            <a href="product.php?id=<? echo $id_product; ?>" class="breadcrumb">Product</a>
           </div>
         </div>
       </nav>

@@ -71,8 +71,8 @@ $id_category =$_GET['id'];
           $result = $pg_query($connection,$queryproduct);
 
           //pages
-           $total = pg_query($connection,"SELECT FOUND_ROWS() as total");
-           pg_fetch_assoc($total)['total'];
+           $total = pg_query($connection,"SELECT COUNT(*) OVER() as total FROM product");
+           $total = pg_fetch_assoc($total)['total'];
            $pages = ceil($total / $perpage);
 
             if (pg_num_rows($result) > 0) {
