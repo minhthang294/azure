@@ -62,18 +62,18 @@ $id_category =$_GET['id'];
           //get products
 
           //pages links
-          $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-          $perpage = isset($_GET['per-page']) && $_GET['per-page'] <= 16 ? (int)$_GET['per-page'] : 16;
+          // $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+          // $perpage = isset($_GET['per-page']) && $_GET['per-page'] <= 16 ? (int)$_GET['per-page'] : 16;
 
-          $start = ($page > 1) ? ($page * $perpage) - $perpage : 0;
+          // $start = ($page > 1) ? ($page * $perpage) - $perpage : 0;
 
           $queryproduct = "SELECT id, name, price, id_picture, thumbnail FROM product WHERE id_category = '{$id_category}' ORDER BY id";
           $result = $pg_query($connection,$queryproduct);
 
           //pages
-           $total = pg_query($connection,"SELECT COUNT(*) OVER() as total FROM product");
-           $total = pg_fetch_assoc($total)['total'];
-           $pages = ceil($total / $perpage);
+          //  $total = pg_query($connection,"SELECT COUNT(*) OVER() as total FROM product");
+          //  $total = pg_fetch_assoc($total)['total'];
+          //  $pages = ceil($total / $perpage);
 
             if (pg_num_rows($result) > 0) {
             // output data of each row
@@ -104,7 +104,7 @@ $id_category =$_GET['id'];
               <?php }} ?>
 
               </div>
-                <div class="center-align animated slideInUp wow">
+                <!-- <div class="center-align animated slideInUp wow">
                   <ul class="pagination <?php if($total<15){echo "hide";} ?>">
                   <li class="<?php if($page == 1){echo 'hide';} ?>"><a href="?page=<?php echo $page-1; ?>&per-page=15"><i class="material-icons">chevron_left</i></a></li>
                   <?php for ($x=1; $x <= $pages; $x++) : $y = $x;?>
@@ -117,7 +117,7 @@ $id_category =$_GET['id'];
                   <?php endfor; ?>
                   <li class="<?php if($page == $y){echo 'hide';} ?>"><a href="?page=<?php echo $page+1; ?>&per-page=15"><i class="material-icons">chevron_right</i></a></li>
                 </ul>
-                </div>
+                </div> -->
           </div>
       </div>
 
