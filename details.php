@@ -84,7 +84,7 @@ else {
           $queryupdate = "UPDATE details_command SET statut = 'done' WHERE id_user = '$idsess' AND statut = 'ready'";
           $queryupdate = pg_query($connection, $queryupdate);
 
-          echo "<meta http-equiv='refresh' content='0;url=index' />";
+          echo "<meta http-equiv='refresh' content='0;url=index.php' />";
         }
 
        ?>
