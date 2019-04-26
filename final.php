@@ -48,7 +48,7 @@
                                                   price,
                                                   id_command,
                                                   id_user,
-                                                  user,
+                                                  \"user\",
                                                   address,
                                                   country,
                                                   city,
@@ -88,10 +88,10 @@
        <nav>
          <div class="nav-wrapper">
            <div class="col s12">
-             <a href="index" class="breadcrumb">Home</a>
-             <a href="cart" class="breadcrumb">Cart</a>
-             <a href="checkout" class="breadcrumb">Checkout</a>
-             <a href="final" class="breadcrumb">Thank you</a>
+             <a href="index.php" class="breadcrumb">Home</a>
+             <a href="cart.php" class="breadcrumb">Cart</a>
+             <a href="checkout.php" class="breadcrumb">Checkout</a>
+             <a href="final.php" class="breadcrumb">Thank you</a>
            </div>
          </div>
        </nav>
@@ -117,7 +117,7 @@
 
    <div class="center-align">
      <a href="details.php" class="button-rounded blue btn waves-effects waves-light">Details</a>
-     <a href="index" class="button-rounded btn waves-effects waves-light">Home</a>
+     <a href="index.php" class="button-rounded btn waves-effects waves-light">Home</a>
    </div>
   </div>
   <div class="col s12 m3">
