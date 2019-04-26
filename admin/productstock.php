@@ -3,7 +3,7 @@
 session_start();
 
 if ($_SESSION['role'] !== 'admin') {
-  header('Location: ../index');
+  header('Location: ../index.php');
 }
 
 $category = $_GET['id'];
@@ -16,9 +16,9 @@ $category = $_GET['id'];
       <nav>
         <div class="nav-wrapper">
           <div class="col s12">
-            <a href="index" class="breadcrumb">Dashboard</a>
-            <a href="products" class="breadcrumb">Stock</a>
-            <a href="productstock" class="breadcrumb">Products</a>
+            <a href="index.php" class="breadcrumb">Dashboard</a>
+            <a href="products.php" class="breadcrumb">Stock</a>
+            <a href="productstock.php" class="breadcrumb">Products</a>
           </div>
         </div>
       </nav>
@@ -30,9 +30,9 @@ $category = $_GET['id'];
            include '../db.php';
             // get stock
             $query = "SELECT * FROM product WHERE id_category = '$category'";
-            $result = $connection->query($query);
+            $result = pg_query($connection,$query);
             if ($result->num_rows > 0) {
-              while($rows = $result->fetch_assoc()) {
+              while($rows = pg_fetch_assoc($result)) {
                $id_product = $rows['id'];
                $name = $rows['name'];
                $thumbnail = $rows['thumbnail'];

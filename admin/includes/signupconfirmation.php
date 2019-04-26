@@ -114,9 +114,9 @@ include 'db.php';
 
   //get user
    $queryuser_db = "SELECT username FROM users WHERE username LIKE '$username'";
-   $resultuser_db = $connection->query($queryuser_db);
+   $resultuser_db = pg_query($connection,$queryuser_db);
 
-  if ($resultuser_db->num_rows > 0) {
+  if (pg_num_rows($resultuser_db) > 0) {
    echo "<div class='center-align'>
    <button class='btn red waves-effects waves-light'>$username does already exists</button><br><br>
    </div>";

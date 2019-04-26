@@ -2,13 +2,13 @@
 $name = $_POST['name'];
 $password=md5($_POST['pass']);
 include 'db.php';
-$name=mysqli_real_escape_string($connection, $name);
+$name=pg_escape_string($connection, $name);
 $query = "SELECT * FROM users WHERE username='{$name}' and password = '{$password}'";
-$select_user_query = mysqli_query($connection, $query);
+$select_user_query = pg_query($connection, $query);
 if (!$select_user_query) {
-DIE("QUERY FAILED". mysqli_error($connection));
+DIE("QUERY FAILED". pg_error($connection));
 }
-$row = mysqli_fetch_array($select_user_query);
+$row = pg_fetch_array($select_user_query);
 
 $db_id = $row['id'];
 $db_name = $row['username'];
@@ -22,7 +22,7 @@ echo "<div class='center-align meh'>
 }
 elseif($db_job == 'admin'){
   $querystatut = "UPDATE users SET statut = 'online' WHERE id='$db_id'";
-  $resultstatut = $connection->query($querystatut);
+  $resultstatut = pg_query($connection,$querystatut);
 
   $_SESSION['admin'] = $db_job;
   $_SESSION['id'] = $db_id;
@@ -32,12 +32,12 @@ elseif($db_job == 'admin'){
 }
 else{
   $querystatut = "UPDATE users SET statut = 'online' WHERE id='$db_id'";
-  $resultstatut = $connection->query($querystatut);
+  $resultstatut = pg_query($connection,$querystatut);
 
 $_SESSION['id'] = $db_id;
 $_SESSION['user'] = $db_name;
 $_SESSION['logged_in']= 'True';
-header( "Location: index" );
+header( "Location: index.php" );
 }
 
 } ?>

@@ -3,7 +3,7 @@
 session_start();
 
 if (!isset($_SESSION['id'])) {
-header('Location: ../sign');
+header('Location: ../sign.php');
 }
 else {
 
@@ -18,9 +18,9 @@ require 'includes/navconnected.php'; }
     <nav>
       <div class="nav-wrapper">
         <div class="col s12">
-          <a href="index" class="breadcrumb">Dashboard</a>
-          <a href="infoproduct" class="breadcrumb">Managa Products</a>
-          <a href="addproduct" class="breadcrumb">Add product</a>
+          <a href="index.php" class="breadcrumb">Dashboard</a>
+          <a href="infoproduct.php" class="breadcrumb">Managa Products</a>
+          <a href="addproduct.php" class="breadcrumb">Add product</a>
         </div>
       </div>
     </nav>
@@ -35,10 +35,10 @@ require 'includes/navconnected.php'; }
 
         //get categories
           $querycategory = "SELECT id, name, icon  FROM category";
-          $total = $connection->query($querycategory);
-          if ($total->num_rows > 0) {
+          $total = pg_query($connection,$querycategory);
+          if (pg_num_rows($total) > 0) {
           // output data of each row
-          while($rowcategory = $total->fetch_assoc()) {
+          while($rowcategory = pg_fetch_assoc($total)) {
             $id_category = $rowcategory['id'];
             $name_category = $rowcategory['name'];
             $icon_category = $rowcategory['icon'];

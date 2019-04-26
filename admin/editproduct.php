@@ -3,7 +3,7 @@
 session_start();
 
 if ($_SESSION['role'] !== 'admin') {
-  header('Location: ../index');
+  header('Location: ../index.php');
 }
 
  require 'includes/header.php';
@@ -14,9 +14,9 @@ if ($_SESSION['role'] !== 'admin') {
       <nav>
         <div class="nav-wrapper">
           <div class="col s12">
-            <a href="index" class="breadcrumb">Dashboard</a>
-            <a href="infoproduct" class="breadcrumb">Products</a>
-            <a href="editproduct" class="breadcrumb">Commands</a>
+            <a href="index.php" class="breadcrumb">Dashboard</a>
+            <a href="infoproduct.php" class="breadcrumb">Products</a>
+            <a href="editproduct.php" class="breadcrumb">Commands</a>
           </div>
         </div>
       </nav>
@@ -56,10 +56,10 @@ FROM product, command
 WHERE product.id = command.id_produit
 GROUP BY command.id
 ORDER BY SUM(command.id_user) DESC ";
-$resultfirst = $connection->query($queryfirst);
-if ($resultfirst->num_rows > 0) {
+$resultfirst = pg_query($connection,$queryfirst);
+if (pg_num_rows($resultfirst) > 0) {
   // output data of each row
-  while($rowfirst = $resultfirst->fetch_assoc()) {
+  while($rowfirst = pg_fetch_assoc($resultfirst)) {
 
         $idp = $rowfirst['id'];
         $name = $rowfirst['name'];
@@ -70,10 +70,10 @@ if ($resultfirst->num_rows > 0) {
 
         //get user name
         $queryuser = "SELECT firstname, lastname FROM users WHERE id = '$user'";
-        $resultuser = $connection->query($queryuser);
-        if ($resultuser->num_rows > 0) {
+        $resultuser = pg_query($connection,$queryuser);
+        if (pg_num_rows($resultuser) > 0) {
           // output data of each row
-          while($rowuser = $resultuser->fetch_assoc()) {
+          while($rowuser = pg_fetch_assoc($resultuser)) {
             $userfirstname = $rowuser['firstname'];
             $userlasttname = $rowuser['lastname'];
     ?>

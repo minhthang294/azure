@@ -57,7 +57,7 @@ $picture1 = $_FILES["picture1"]["name"];
 //adding pictures
 $querypic = "INSERT INTO pictures(picture, id_produit)
 VALUES ('$picture1', '$idproduct')";
-mysqli_query($connection, $querypic);
+pg_query($connection, $querypic);
 
 
 $pathpic2 = "../productsimg/";
@@ -116,7 +116,7 @@ $picture2 = $_FILES["picture2"]["name"];
 //adding pictures
 $querypic = "INSERT INTO pictures(picture, id_produit)
 VALUES ('$picture2', '$idproduct')";
-mysqli_query($connection, $querypic);
+pg_query($connection, $querypic);
 
 
 $pathpic3 = "../productsimg/";
@@ -175,7 +175,7 @@ $picture3 = $_FILES["picture3"]["name"];
 //adding pictures
 $querypic = "INSERT INTO pictures(picture, id_produit)
 VALUES ('$picture3', '$idproduct')";
-mysqli_query($connection, $querypic);
+pg_query($connection, $querypic);
 
 
  ?>

@@ -3,7 +3,7 @@
 session_start();
 
 if ($_SESSION['role'] !== 'admin') {
-  header('Location: ../index');
+  header('Location: ../index.php');
 }
 
  require 'includes/header.php';
@@ -14,8 +14,8 @@ if ($_SESSION['role'] !== 'admin') {
       <nav>
         <div class="nav-wrapper">
           <div class="col s12">
-            <a href="index" class="breadcrumb">Dashboard</a>
-            <a href="editprofile" class="breadcrumb">Edit Profile</a>
+            <a href="index.php" class="breadcrumb">Dashboard</a>
+            <a href="editprofile.php" class="breadcrumb">Edit Profile</a>
           </div>
         </div>
       </nav>
@@ -56,7 +56,7 @@ if ($_SESSION['role'] !== 'admin') {
               include '../db.php';
               // update info on users Toble
               $queryupdate = "UPDATE users SET email ='$newemail', password ='$newpassword' WHERE role='admin'";
-              $result = $connection->query($queryupdate);
+              $result = pg_query($connection,$queryupdate);
 
               echo "<meta http-equiv='refresh' content='0'; url='editprofile' />";
 

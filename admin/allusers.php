@@ -3,7 +3,7 @@
 session_start();
 
 if ($_SESSION['role'] !== 'admin') {
-  header('Location: ../index');
+  header('Location: ../index.php');
 }
 
  require 'includes/header.php';
@@ -14,8 +14,8 @@ if ($_SESSION['role'] !== 'admin') {
       <nav>
         <div class="nav-wrapper">
           <div class="col s12">
-            <a href="index" class="breadcrumb">Dashboard</a>
-            <a href="users" class="breadcrumb">Users</a>
+            <a href="index.php" class="breadcrumb">Dashboard</a>
+            <a href="users.php" class="breadcrumb">Users</a>
           </div>
         </div>
       </nav>
@@ -40,10 +40,10 @@ if ($_SESSION['role'] !== 'admin') {
 
                   //get users
                   $queryuser = "SELECT id, email, firstname, lastname, address, city, country  FROM users WHERE role = 'client'";
-                  $resultuser = $connection->query($queryuser);
-                  if ($resultuser->num_rows > 0) {
+                  $resultuser = pg_query($connection,$queryuser);
+                  if (pg_num_rows($resultuser) > 0) {
                     // output data of each row
-                    while($rowuser = $resultuser->fetch_assoc()) {
+                    while($rowuser = pg_fetch_assoc($resultuser)) {
                       $id_user = $rowuser['id'];
                       $firstname = $rowuser['firstname'];
                       $lasttname = $rowuser['lastname'];

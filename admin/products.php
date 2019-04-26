@@ -3,7 +3,7 @@
 session_start();
 
 if ($_SESSION['role'] !== 'admin') {
-  header('Location: ../index');
+  header('Location: ../index.php');
 }
 
  require 'includes/header.php';
@@ -14,8 +14,8 @@ if ($_SESSION['role'] !== 'admin') {
       <nav>
         <div class="nav-wrapper">
           <div class="col s12">
-            <a href="index" class="breadcrumb">Dashboard</a>
-            <a href="products" class="breadcrumb">Stock</a>
+            <a href="index.php" class="breadcrumb">Dashboard</a>
+            <a href="products.php" class="breadcrumb">Stock</a>
           </div>
         </div>
       </nav>
@@ -39,9 +39,9 @@ if ($_SESSION['role'] !== 'admin') {
             FROM product, category
             WHERE product.id_category = category.id
             GROUP BY category.id";
-            $resultstock = $connection->query($querystock);
-            if ($resultstock->num_rows > 0) {
-              while($rowstock = $resultstock->fetch_assoc()) {
+            $resultstock = pg_query($connection,$querystock);
+            if (pg_num_rows($resultstock) > 0) {
+              while($rowstock = pg_fetch_assoc($resultstock)) {
                $id_cat = $rowstock['id_cat'];
                $name = $rowstock['name'];
                $icon = $rowstock['icon'];

@@ -105,12 +105,12 @@ CreateThumbs($img_path, $img_path, 602, 600, 1);
 
 function get_last_id(){
 		$connection = $GLOBALS['connection'];
-		$stmt = $connection->prepare('SELECT * FROM product');
-		$stmt->execute();
+		$stmt = pg_prepare($connection,'SELECT * FROM product');
+		pg_execute($connection,$stmt);
 
-		$result = $stmt->get_result();
-		if ($result->num_rows > 0) {
-			while ($row = $result->fetch_assoc()) {
+		$result = pg_get_result($stmt);
+		if (pg_num_rows($result) > 0) {
+			while ($row = pg_fetch_assoc($result)) {
 			    $last = $row["id"];
 			}
 			return $last;
@@ -133,7 +133,7 @@ require 'includes/pictures.php';
   $queryaddproduct = "INSERT INTO product(id_category, name, description, price, id_picture, thumbnail)
   VALUES ('$id_category', '$name', '$description','$price', '$idproduct', '$img_title')";
 
-if ($connection->query($queryaddproduct) === TRUE ) {
+if (pg_query($connection,$queryaddproduct) === TRUE ) {
           echo "<div class='center-align'>
                  <h5 class='green-text'>Product Added Successfully</h5>
                  </div><br><br>";

@@ -3,7 +3,7 @@
 session_start();
 
 if ($_SESSION['role'] !== 'admin') {
-  header('Location: ../index');
+  header('Location: ../index.php');
 }
 
  require 'includes/header.php';
@@ -14,9 +14,9 @@ if ($_SESSION['role'] !== 'admin') {
       <nav>
         <div class="nav-wrapper">
           <div class="col s12">
-            <a href="index" class="breadcrumb">Dashboard</a>
-            <a href="infoproduct" class="breadcrumb">Products</a>
-            <a href="stats" class="breadcrumb">stats</a>
+            <a href="index.php" class="breadcrumb">Dashboard</a>
+            <a href="infoproduct.php" class="breadcrumb">Products</a>
+            <a href="stats.php" class="breadcrumb">stats</a>
           </div>
         </div>
       </nav>
@@ -46,10 +46,10 @@ if ($_SESSION['role'] !== 'admin') {
          WHERE product.id = command.id_produit
          AND command.statut = 'paid' AND category.id = product.id_category
          GROUP BY category.id";
-         $resultfirst = $connection->query($queryfirst);
-         if ($resultfirst->num_rows > 0) {
+         $resultfirst = pg_query($connection,$queryfirst);
+         if (pg_num_rows($resultfirst) > 0) {
            // output data of each row
-           while($rowfirst = $resultfirst->fetch_assoc()) {
+           while($rowfirst = pg_fetch_assoc($resultfirst)) {
 
                  $idp = $rowfirst['id'];
                  $name_best = $rowfirst['name'];
