@@ -67,7 +67,7 @@ $id_category =$_GET['id'];
 
           $start = ($page > 1) ? ($page * $perpage) - $perpage : 0;
 
-          $queryproduct = "SELECT SQL_CALC_FOUND_ROWS id, name, price, id_picture, thumbnail FROM product WHERE id_category = '{$id_category}' ORDER BY id DESC LIMIT {$start}, 16";
+          $queryproduct = "SELECT id, name, price, id_picture, thumbnail FROM product WHERE id_category = '{$id_category}' ORDER BY id";
           $result = $pg_query($connection,$queryproduct);
 
           //pages
