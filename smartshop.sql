@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
@@ -19,39 +19,39 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `smartshop`
+-- Database: smartshop
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ads`
+-- Table structure for table ads
 --
 
-CREATE TABLE `ads` (
-  `id` int(11) NOT NULL,
-  `title` varchar(1000) NOT NULL,
-  `img` varchar(1000) NOT NULL,
-  `link` varchar(1000) NOT NULL
+CREATE TABLE ads (
+  id int NOT NULL,
+  title varchar(1000) NOT NULL,
+  img varchar(1000) NOT NULL,
+  link varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Table structure for table category
 --
 
-CREATE TABLE `category` (
-  `id` int(11) NOT NULL,
-  `name` varchar(1000) NOT NULL,
-  `icon` varchar(1000) NOT NULL
+CREATE TABLE category (
+  id int NOT NULL,
+  name varchar(1000) NOT NULL,
+  icon varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `category`
+-- Dumping data for table category
 --
 
-INSERT INTO `category` (`id`, `name`, `icon`) VALUES
+INSERT INTO category (id, name, icon) VALUES
 (1, 'Smartphone', 'phone'),
 (2, 'Smartcam', 'cam'),
 (3, 'Laptop', 'laptop'),
@@ -62,23 +62,23 @@ INSERT INTO `category` (`id`, `name`, `icon`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `command`
+-- Table structure for table command
 --
 
-CREATE TABLE `command` (
-  `id` int(11) NOT NULL,
-  `id_produit` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `dat` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `statut` varchar(1000) NOT NULL,
-  `id_user` int(11) NOT NULL
+CREATE TABLE command (
+  id int NOT NULL,
+  id_produit int NOT NULL,
+  quantity int NOT NULL,
+  dat timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  statut varchar(1000) NOT NULL,
+  id_user int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `command`
+-- Dumping data for table command
 --
 
-INSERT INTO `command` (`id`, `id_produit`, `quantity`, `dat`, `statut`, `id_user`) VALUES
+INSERT INTO command (id, id_produit, quantity, dat, statut, id_user) VALUES
 (41, 1, 1, '2017-02-06 13:58:34', 'paid', 7),
 (61, 11, 1, '2017-02-07 16:21:05', 'paid', 8),
 (63, 9, 1, '2017-02-07 16:28:20', 'paid', 8),
@@ -129,28 +129,28 @@ INSERT INTO `command` (`id`, `id_produit`, `quantity`, `dat`, `statut`, `id_user
 -- --------------------------------------------------------
 
 --
--- Table structure for table `details_command`
+-- Table structure for table details_command
 --
 
-CREATE TABLE `details_command` (
-  `id` int(11) NOT NULL,
-  `product` varchar(1000) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
-  `id_command` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `user` varchar(1000) NOT NULL,
-  `address` varchar(1000) NOT NULL,
-  `country` varchar(1000) NOT NULL,
-  `city` varchar(1000) NOT NULL,
-  `statut` varchar(1000) NOT NULL
+CREATE TABLE details_command (
+  id int NOT NULL,
+  product varchar(1000) NOT NULL,
+  quantity int NOT NULL,
+  price int NOT NULL,
+  id_command int NOT NULL,
+  id_user int NOT NULL,
+  user varchar(1000) NOT NULL,
+  address varchar(1000) NOT NULL,
+  country varchar(1000) NOT NULL,
+  city varchar(1000) NOT NULL,
+  statut varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `details_command`
+-- Dumping data for table details_command
 --
 
-INSERT INTO `details_command` (`id`, `product`, `quantity`, `price`, `id_command`, `id_user`, `user`, `address`, `country`, `city`, `statut`) VALUES
+INSERT INTO details_command (id, product, quantity, price, id_command, id_user, user, address, country, city, statut) VALUES
 (1, 'MSI GP62 Leopard Pro', 1, 839, 71, 11, 'ali ghallou', 'N 23 Lot El Waha Errachidia', 'Morocco', 'Errachidia', 'done'),
 (3, 'Oculus rift', 2, 1200, 73, 11, 'ali ghallou', 'N 23 Lot El Waha Errachidia', 'Morocco', 'Errachidia', 'done'),
 (4, 'Apple Watch', 1, 349, 74, 11, 'alighallou', 'N 23 Lot El Waha Errachidia', 'Morocco', 'Errachidia', 'done'),
@@ -187,20 +187,20 @@ INSERT INTO `details_command` (`id`, `product`, `quantity`, `price`, `id_command
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pictures`
+-- Table structure for table pictures
 --
 
-CREATE TABLE `pictures` (
-  `id` int(11) NOT NULL,
-  `picture` varchar(1000) NOT NULL,
-  `id_produit` int(11) NOT NULL
+CREATE TABLE pictures (
+  id int NOT NULL,
+  picture varchar(1000) NOT NULL,
+  id_produit int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pictures`
+-- Dumping data for table pictures
 --
 
-INSERT INTO `pictures` (`id`, `picture`, `id_produit`) VALUES
+INSERT INTO pictures (id, picture, id_produit) VALUES
 (13, 'Samsung-Galaxy-S6-edge-Gold-Platinum..jpg', 2),
 (14, 'samsung-galaxy-s7-edge.jpg', 2),
 (15, 'galaxy-s7-edge-black.png', 2),
@@ -235,59 +235,59 @@ INSERT INTO `pictures` (`id`, `picture`, `id_produit`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Table structure for table product
 --
 
-CREATE TABLE `product` (
-  `id` int(11) NOT NULL,
-  `id_category` int(11) NOT NULL,
-  `name` varchar(1000) NOT NULL,
-  `description` varchar(1000) NOT NULL,
-  `price` int(11) NOT NULL,
-  `id_picture` int(11) NOT NULL,
-  `thumbnail` varchar(1000) NOT NULL,
-  `promo` varchar(1000) NOT NULL
+CREATE TABLE product (
+  id int NOT NULL,
+  id_category int NOT NULL,
+  name varchar(1000) NOT NULL,
+  description varchar(1000) NOT NULL,
+  price int NOT NULL,
+  id_picture int NOT NULL,
+  thumbnail varchar(1000) NOT NULL,
+  promo varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `product`
+-- Dumping data for table product
 --
 
-INSERT INTO `product` (`id`, `id_category`, `name`, `description`, `price`, `id_picture`, `thumbnail`, `promo`) VALUES
+INSERT INTO product (id, id_category, name, description, price, id_picture, thumbnail, promo) VALUES
 (7, 1, 'Samsung s7 edge', '5.50-inch 1440x2560 display powered by 1.6GHz octa-core processor alongside 4GB of RAM and 12-megapixel', 560, 2, 'galaxy-s7-edge-black.png', ''),
-(8, 1, 'Iphone 7', 'Features 3G, 4.7â€³ LED-backlit IPS LCD display, 12 MP camera, Wi-Fi, GPS, Bluetooth', 700, 8, 'rsz_iphone-7-jet-black.jpg', ''),
+(8, 1, 'Iphone 7', 'Features 3G, 4.7 LED-backlit IPS LCD display, 12 MP camera, Wi-Fi, GPS, Bluetooth', 700, 8, 'rsz_iphone-7-jet-black.jpg', ''),
 (9, 2, 'Gopro Hero 5', ' GoPro HERO5 Black features Supports 4K30, 2.7K60, 1080p120 Video, Capture 12MP Photos at 30fps', 450, 9, 'gopro5.png', '1'),
 (11, 6, 'Oculus rift', 'The Oculus Rift is a virtual reality system that completely immerses you inside virtual worlds', 600, 10, 'Oculus_Product_Dynamic 45.jpg', '1'),
-(12, 3, 'MSI GP62 Leopard Pro', 'In-depth review of the MSI GP62-2QEi781FD (Intel Core i7 5700HQ, NVIDIA GeForce GTX 950M, 15.6\", 2.3 kg) ... The MSI GE series is already the manufacturer\'s entry-level gaming series. ..... ', 839, 12, 'msi-gp62-6qf-product_pictures-3d1.png', ''),
+(12, 3, 'MSI GP62 Leopard Pro', 'In-depth review of the MSI GP62-2QEi781FD (Intel Core i7 5700HQ, NVIDIA GeForce GTX 950M, 15.6, 2.3 kg) ... The MSI GE series is already the manufacturers entry-level gaming series. ..... ', 839, 12, 'msi-gp62-6qf-product_pictures-3d1.png', ''),
 (13, 5, 'Amazon Echo', 'Amazon Echo is a hands-free speaker you control with your voice. Echo connects to the Alexa Voice Service to play music, provide information, news, sports ...', 179, 13, 'amazon-echo-image.jpg', ''),
 (14, 4, 'Apple Watch', 'The new Apple Watch is the ultimate device for your healthy life. Choose from a range of models including Apple Watch Series 2 and Apple Watch Nike+', 349, 14, 'apple-watch-premium-design-vs-pebble-time-round-classic-design.jpg', ''),
-(15, 1, 'Google Pixel XL', 'XL 5.5\" Phone 128GB Quite Black Cell Smart. GOOGLE PIXEL XL 5.5\" Black 32GB TRUE ANDROID PHONE CDMA+GSM WORLD UNLOCKED', 649, 15, 'pixel.png', ''),
-(16, 2, 'Canon EOS 7D', 'The EOS 7D features a Canon-designed 18.0 Megapixel APS-C size CMOS sensor that captures such a high level of resolution it\'s easy to crop images for ...', 889, 16, 'EOS 7D Mark II Hero.jpg', ''),
+(15, 1, 'Google Pixel XL', 'XL 5.5 Phone 128GB Quite Black Cell Smart. GOOGLE PIXEL XL 5.5 Black 32GB TRUE ANDROID PHONE CDMA+GSM WORLD UNLOCKED', 649, 15, 'pixel.png', ''),
+(16, 2, 'Canon EOS 7D', 'The EOS 7D features a Canon-designed 18.0 Megapixel APS-C size CMOS sensor that captures such a high level of resolution its easy to crop images for ...', 889, 16, 'EOS 7D Mark II Hero.jpg', ''),
 (17, 1, 'Nexus 6P', 'All-metal design Unlocked, LTE smartphone with a powerful 2GHz Snapdragon 810 V2.1 Processor and the newest Android software, Android 6.0 marshmallow.', 499, 17, 'nexus-6p-topic-full.png', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table users
 --
 
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `firstname` varchar(1000) NOT NULL,
-  `lastname` varchar(1000) NOT NULL,
-  `password` varchar(1000) NOT NULL,
-  `address` varchar(1000) NOT NULL,
-  `city` varchar(1000) NOT NULL,
-  `country` varchar(1000) NOT NULL,
-  `role` varchar(1000) NOT NULL
+CREATE TABLE users (
+  id int NOT NULL,
+  email varchar(100) NOT NULL,
+  firstname varchar(1000) NOT NULL,
+  lastname varchar(1000) NOT NULL,
+  password varchar(1000) NOT NULL,
+  address varchar(1000) NOT NULL,
+  city varchar(1000) NOT NULL,
+  country varchar(1000) NOT NULL,
+  role varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table users
 --
 
-INSERT INTO `users` (`id`, `email`, `firstname`, `lastname`, `password`, `address`, `city`, `country`, `role`) VALUES
+INSERT INTO users (id, email, firstname, lastname, password, address, city, country, role) VALUES
 (5, 'ismailghallou@hotmail.com', 'Ismail', 'Ghallou', '6c34fd5b51dcdd56ad9204c67209d6b5', 'N 23 Lot El Waha Errachidia', 'Errachidia', 'Morocco', 'admin'),
 (6, 'ismail16smakosh23@gmail.com', 'ahmed', 'ali', '9193ce3b31332b03f7d8af056c692b84', 'N 26 Lot El Waha Errachidia', 'Errachidia', 'Morocco', 'client'),
 (7, 'ismail@hotmail.com', 'omar', 'ahmed', 'd4466cce49457cfea18222f5a7cd3573', 'N 22 Lot El Waha Errachidia', 'Errachidia', 'Morocco', 'client'),
@@ -302,92 +302,92 @@ INSERT INTO `users` (`id`, `email`, `firstname`, `lastname`, `password`, `addres
 --
 
 --
--- Indexes for table `ads`
+-- Indexes for table ads
 --
-ALTER TABLE `ads`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE ads
+  ADD PRIMARY KEY (id);
 
 --
--- Indexes for table `category`
+-- Indexes for table category
 --
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE category
+  ADD PRIMARY KEY (id);
 
 --
--- Indexes for table `command`
+-- Indexes for table command
 --
-ALTER TABLE `command`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE command
+  ADD PRIMARY KEY (id);
 
 --
--- Indexes for table `details_command`
+-- Indexes for table details_command
 --
-ALTER TABLE `details_command`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE details_command
+  ADD PRIMARY KEY (id);
 
 --
--- Indexes for table `pictures`
+-- Indexes for table pictures
 --
-ALTER TABLE `pictures`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE pictures
+  ADD PRIMARY KEY (id);
 
 --
--- Indexes for table `product`
+-- Indexes for table product
 --
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE product
+  ADD PRIMARY KEY (id);
 
 --
--- Indexes for table `users`
+-- Indexes for table users
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE users
+  ADD PRIMARY KEY (id);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `ads`
+-- AUTO_INCREMENT for table ads
 --
-ALTER TABLE `ads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE ads
+  MODIFY id int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT for table category
 --
-ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE category
+  MODIFY id int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `command`
+-- AUTO_INCREMENT for table command
 --
-ALTER TABLE `command`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+ALTER TABLE command
+  MODIFY id int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 
 --
--- AUTO_INCREMENT for table `details_command`
+-- AUTO_INCREMENT for table details_command
 --
-ALTER TABLE `details_command`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+ALTER TABLE details_command
+  MODIFY id int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
--- AUTO_INCREMENT for table `pictures`
+-- AUTO_INCREMENT for table pictures
 --
-ALTER TABLE `pictures`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+ALTER TABLE pictures
+  MODIFY id int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT for table product
 --
-ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+ALTER TABLE product
+  MODIFY id int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table users
 --
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+ALTER TABLE users
+  MODIFY id int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

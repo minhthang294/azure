@@ -55,10 +55,10 @@ require $nav; ?>
     WHERE product.id = command.id_produit AND command.statut = 'paid'
     GROUP BY product.id
     ORDER BY SUM(command.quantity) DESC LIMIT 3";
-    $resultfirst = $connection->query($queryfirst);
-    if ($resultfirst->num_rows > 0) {
+    $resultfirst = pg_query($connection,$queryfirst);
+    if (pg_num_rows($resultfirst) > 0) {
       // output data of each row
-      while($rowfirst = $resultfirst->fetch_assoc()) {
+      while($rowfirst = pg_fetch_assoc($resultfirst)) {
 
             $id_best = $rowfirst['id'];
             $name_best = $rowfirst['name'];
@@ -105,10 +105,10 @@ require $nav; ?>
 
                 //get categories
                 $querycategory = "SELECT id, name, icon  FROM category";
-                $total = $connection->query($querycategory);
-                if ($total->num_rows > 0) {
+                $total = pg_query($connection,$querycategory);
+                if (pg_num_rows($total) > 0) {
                   // output data of each row
-                  while($rowcategory = $total->fetch_assoc()) {
+                  while($rowcategory = pg_fetch_assoc($total)) {
                     $id_category = $rowcategory['id'];
                     $name_category = $rowcategory['name'];
                     $icon_category = $rowcategory['icon'];

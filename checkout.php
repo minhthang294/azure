@@ -2,11 +2,11 @@
 session_start();
 
 if (!isset($_SESSION['logged_in']) && !isset($_SESSION['item'])) {
-    header('Location: sign');
+    header('Location: sign.php');
 }
 
 elseif($_SESSION['item'] < 1){
-  header('Location: index');
+  header('Location: index.php');
 }
 else {
   $nav ='includes/navconnected.php';

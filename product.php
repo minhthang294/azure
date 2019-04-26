@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_GET['id'])) {
-    header('Location: index');
+    header('Location: index.php');
 }
 
 if (!isset($_SESSION['logged_in'])) {
@@ -44,10 +44,10 @@ $id_product =$_GET['id'];
             //get products
             $queryproduct = "SELECT id, name, price, description, id_picture, thumbnail
               FROM product WHERE id = '{$id_product}'";
-            $result1 = $connection->query($queryproduct);
-            if ($result1->num_rows > 0) {
+            $result1 = pg_query($connection,$queryproduct);
+            if (pg_num_rows($result1) > 0) {
             // output data of each row
-            while($rowproduct = $result1->fetch_assoc()) {
+            while($rowproduct = pg_fetch_assoc($result1)) {
               $id_productdb = $rowproduct['id'];
               $name_product = $rowproduct['name'];
               $price_product = $rowproduct['price'];
@@ -62,10 +62,10 @@ $id_product =$_GET['id'];
 
          //get categories
            $querypic = "SELECT picture, id_produit FROM pictures WHERE id_produit = '$id_pic'";
-           $total = $connection->query($querypic);
-           if ($total->num_rows > 0) {
+           $total = pg_query($connection,$querypic);
+           if (pg_num_rows($total) > 0) {
            // output data of each row
-           while($rowpic = $total->fetch_assoc()) {
+           while($rowpic = pg_fetch_assoc($total)) {
              $pics = $rowpic['picture'];
           ?>
            <div class="col s12 m4">
@@ -98,7 +98,7 @@ $id_product =$_GET['id'];
             if (isset($_POST['buy'])) {
 
                if (!isset($_SESSION['logged_in'])) {
-                 echo "<meta http-equiv='refresh' content='0;url=http://localhost/Smartshop/sign' />";
+                 echo "<meta http-equiv='refresh' content='0;url=sign.php' />";
                }
 
                else {
@@ -110,7 +110,7 @@ $id_product =$_GET['id'];
               $querybuy = "INSERT INTO command(id_produit, quantity, statut, id_user)
               VALUES ('$id_productdb','$quantity','ordered', '$idsess')";
 
-            if ($connection->query($querybuy) === TRUE) {
+            if (pg_query($querybuy,$querybuy) === TRUE) {
                      $_SESSION['item'] += 1;
 
                      echo "<meta http-equiv='refresh' content='0;url=product.php?id=$id_productdb' />";

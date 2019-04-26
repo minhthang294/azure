@@ -2,7 +2,7 @@
   session_start();
 
  if (!isset($_SESSION['logged_in'])) {
-     header('Location: sign');
+     header('Location: sign.php');
  }
 
 else {
@@ -29,10 +29,10 @@ else {
          include 'db.php';
         //get detailss
         $querydetails = "SELECT * FROM details_command WHERE id_user = '$idsess' AND statut ='ready'";
-        $result = $connection->query($querydetails);
-        if ($result->num_rows > 0) {
+        $result = pg_query($connection,$querydetails);
+        if (pg_num_rows($result) > 0) {
         // output data of each row
-        while($rowdetails = $result->fetch_assoc()) {
+        while($rowdetails = pg_fetch_assoc($result)) {
           $id_details = $rowdetails['id'];
           $product_details = $rowdetails['product'];
           $quantity_details = $rowdetails['quantity'];
@@ -58,8 +58,8 @@ else {
         <?php
 
         $querycmd = "SELECT id FROM command WHERE id = '$idcmdd'";
-        $getid = mysqli_query($connection, $querycmd);
-        $rowcmd = mysqli_fetch_array($getid);
+        $getid = pg_query($connection, $querycmd);
+        $rowcmd = pg_fetch_array($getid);
         $idcmd = $rowcmd['id'];
 
         ?>
@@ -82,7 +82,7 @@ else {
 
 
           $queryupdate = "UPDATE details_command SET statut = 'done' WHERE id_user = '$idsess' AND statut = 'ready'";
-          $queryupdate = mysqli_query($connection, $queryupdate);
+          $queryupdate = pg_query($connection, $queryupdate);
 
           echo "<meta http-equiv='refresh' content='0;url=index' />";
         }
