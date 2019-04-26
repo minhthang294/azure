@@ -68,7 +68,7 @@ $id_category =$_GET['id'];
           // $start = ($page > 1) ? ($page * $perpage) - $perpage : 0;
 
           $queryproduct = "SELECT id, name, price, id_picture, thumbnail FROM product WHERE id_category = '{$id_category}' ORDER BY id";
-          $result = $pg_query($connection,$queryproduct);
+          $result = pg_query($connection,$queryproduct);
 
           //pages
           //  $total = pg_query($connection,"SELECT COUNT(*) OVER() as total FROM product");
