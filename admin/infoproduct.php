@@ -41,7 +41,7 @@ if ($_SESSION['role'] !== 'admin') {
              <img src="src/img/stats.png" alt="">
            </div>
            <div class="card-action">
-             <a class="blue-text" href="stats">See Stats</a>
+             <a class="blue-text" href="stats.php">See Stats</a>
            </div>
          </div>
        </div>

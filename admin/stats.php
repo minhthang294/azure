@@ -32,14 +32,14 @@ if ($_SESSION['role'] !== 'admin') {
 
          $queryfirst = "SELECT
 
-        product.id as 'id',
+        product.id as id,
         product.id_category,
 
-         SUM(command.quantity) as 'total',
+         SUM(command.quantity) as total,
          command.statut,
          command.id_produit,
 
-         category.name as 'name',
+         category.name as name,
          category.id
 
          FROM product, command, category

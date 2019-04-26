@@ -41,15 +41,15 @@ if ($_SESSION['role'] !== 'admin') {
 include '../db.php';
 
 $queryfirst = "SELECT
-product.id as 'id',
-product.name as 'name',
-product.price as 'price',
+product.id as id,
+product.name as name,
+product.price as price,
 
 SUM(command.quantity),
-command.statut as 'statut',
+command.statut as statut,
 command.id_produit,
-command.quantity as 'quantity',
-command.id_user as 'user'
+command.quantity as quantity,
+command.id_user as user
 
 
 FROM product, command
