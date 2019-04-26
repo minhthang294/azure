@@ -40,10 +40,10 @@ $id_category =$_GET['id'];
 
           //get categories
             $querycategory = "SELECT id, name FROM category";
-            $total = $connection->query($querycategory);
-            if ($total->num_rows > 0) {
+            $total = pg_query($connection,$querycategory);
+            if (pg_num_rows($total) > 0) {
             // output data of each row
-            while($rowcategory = $total->fetch_assoc()) {
+            while($rowcategory = pg_fetch_assoc($total)) {
               $id_categorydb = $rowcategory['id'];
               $name_category = $rowcategory['name'];
           ?>
@@ -68,15 +68,16 @@ $id_category =$_GET['id'];
           $start = ($page > 1) ? ($page * $perpage) - $perpage : 0;
 
           $queryproduct = "SELECT SQL_CALC_FOUND_ROWS id, name, price, id_picture, thumbnail FROM product WHERE id_category = '{$id_category}' ORDER BY id DESC LIMIT {$start}, 16";
-          $result = $connection->query($queryproduct);
+          $result = $pg_query($connection,$queryproduct);
 
           //pages
-           $total = $connection->query("SELECT FOUND_ROWS() as total")->fetch_assoc()['total'];
+           $total = pg_query($connection,"SELECT FOUND_ROWS() as total");
+           pg_fetch_assoc($total)['total'];
            $pages = ceil($total / $perpage);
 
-            if ($result->num_rows > 0) {
+            if (pg_num_rows($result) > 0) {
             // output data of each row
-            while($rowproduct = $result->fetch_assoc()) {
+            while($rowproduct = pg_fetch_assoc($result)) {
               $id_product = $rowproduct['id'];
               $name_product = $rowproduct['name'];
               $price_product = $rowproduct['price'];
