@@ -32,7 +32,7 @@ role) VALUES ('$email',
 '$country',
 'client')";
 
-if ($connection->query($query) === TRUE) {
+if (pg_query($connection,$query) != FALSE) {
 
 
          echo "<div class='center-align'>
