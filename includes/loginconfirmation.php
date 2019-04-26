@@ -47,7 +47,7 @@ else{
     $_SESSION['email'] = $user_email;
     $_SESSION['role'] = 'admin';
     $_SESSION['logged_in']= 'True';
-    echo "<meta http-equiv='refresh' content='0;url=http://localhost/Smartshop-master%20(1)/Smartshop-master/admin/index.php' />";
+    echo "<meta http-equiv='refresh' content='0;url=index.php' />";
   }
 
     else {
