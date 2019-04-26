@@ -50,16 +50,16 @@ else {
 
        $start = ($page > 1) ? ($page * $perpage) - $perpage : 0;
 
-       $queryproduct = "SELECT SQL_CALC_FOUND_ROWS id, name, price, id_picture, thumbnail FROM product WHERE name LIKE '%{$word}%' ORDER BY id DESC LIMIT {$start}, 16";
-       $result = $connection->query($queryproduct);
+       $queryproduct = "SELECT id, name, price, id_picture, thumbnail FROM product WHERE name LIKE '%{$word}%' ORDER BY id DESC LIMIT 5";
+       $result = pg_query($connection,$queryproduct);
 
        //pages
-        $total = $connection->query("SELECT FOUND_ROWS() as total")->fetch_assoc()['total'];
+        $total = pg_fetch_assoc(pg_query($connection,"SELECT COUNT(*) as total"))['total'];
         $pages = ceil($total / $perpage);
 
-         if ($result->num_rows > 0) {
+         if (pg_num_rows($result) > 0) {
          // output data of each row
-         while($rowproduct = $result->fetch_assoc()) {
+         while($rowproduct = pg_fetch_assoc($result)) {
            $id_product = $rowproduct['id'];
            $name_product = $rowproduct['name'];
            $price_product = $rowproduct['price'];

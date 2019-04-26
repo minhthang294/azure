@@ -48,10 +48,10 @@ else {
           command.quantity as 'quantity'
 FROM category, product, command
 WHERE command.id_produit = product.id AND product.id_category = category.id AND command.statut = 'ordered'";
-          $result1 = $connection->query($queryproduct);
-          if ($result1->num_rows > 0) {
+          $result1 = pg_query($connection,$queryproduct);
+          if (pg_num_rows($result1) > 0) {
           // output data of each row
-          while($rowproduct = $result1->fetch_assoc()) {
+          while($rowproduct = pg_fetch_assoc($result1)) {
             $id_productdb = $rowproduct['id'];
             $name_product = $rowproduct['name'];
             $category_product = $rowproduct['category'];
