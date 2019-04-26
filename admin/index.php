@@ -34,7 +34,7 @@ if ($_SESSION['role'] !== 'admin') {
                 <p>Products & Commands</p>
               </div>
                <div class="card-action">
-                 <a href="infoproduct" class="blue-text">Learn more</a>
+                 <a href="infoproduct.php" class="blue-text">Learn more</a>
                </div>
              </div>
            </div>
@@ -50,7 +50,7 @@ if ($_SESSION['role'] !== 'admin') {
           <p>Stock</p>
         </div>
              <div class="card-action">
-               <a href="products" class="blue-text">Learn more</a>
+               <a href="products.php" class="blue-text">Learn more</a>
              </div>
              </div>
 
@@ -67,7 +67,7 @@ if ($_SESSION['role'] !== 'admin') {
                 <p>Users</p>
               </div>
                <div class="card-action">
-                 <a href="allusers" class="blue-text">Learn more</a>
+                 <a href="allusers.php" class="blue-text">Learn more</a>
                </div>
              </div>
            </div>
@@ -77,30 +77,30 @@ if ($_SESSION['role'] !== 'admin') {
             include '../db.php';
             //get total users
             $queryusers = "SELECT count(id) as total FROM users";
-            $resultusers = $connection->query($queryusers);
+            $resultusers = pg_query($connection,$queryusers);
 
-            if($resultusers->num_rows > 0) {
-              while ($rowusers = $resultusers->fetch_assoc()) {
+            if(pg_num_rows($resultusers) > 0) {
+              while ($rowusers = pg_fetch_assoc($resultusers)) {
                 $totalusers = $rowusers['total'];
               }
             }
 
             //get total ordered commands
             $queryorder = "SELECT count(id) as total, statut FROM command WHERE statut = 'ordered'";
-            $resultorder = $connection->query($queryorder);
+            $resultorder = pg_query($connection,$queryorder);
 
-            if($resultorder->num_rows > 0) {
-              while ($roworder = $resultorder->fetch_assoc()) {
+            if(pg_num_rows($resultorder) > 0) {
+              while ($roworder = pg_fetch_assoc($resultorder)) {
                 $totalorder = $roworder['total'];
               }
             }
 
             //get total paid commands
             $querypaid = "SELECT count(id) as total, statut FROM command WHERE statut = 'paid'";
-            $resultpaid = $connection->query($querypaid);
+            $resultpaid = pg_query($connection,$querypaid);
 
-            if($resultorder->num_rows > 0) {
-              while ($rowpaid = $resultpaid->fetch_assoc()) {
+            if(pg_num_rows($resultpaid) > 0) {
+              while ($rowpaid = pg_fetch_assoc($resultpaid)) {
                 $totalpaid = $rowpaid['total'];
               }
             }

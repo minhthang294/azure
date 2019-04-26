@@ -107,10 +107,10 @@ $id_product =$_GET['id'];
               //inserting into command
               include 'db.php';
 
-              $querybuy = "INSERT INTO command (id_produit, quantity, statut, id_user)
+              $querybuy = "INSERT INTO command(id_produit, quantity, statut, id_user)
               VALUES ('$id_productdb','$quantity','ordered', '$idsess')";
 
-            if (pg_query($connection,$querybuy) === TRUE) {
+            if (pg_query($connection,$querybuy) != FALSE) {
                      $_SESSION['item'] += 1;
 
                      echo "<meta http-equiv='refresh' content='0;url=product.php?id=$id_productdb' />";
