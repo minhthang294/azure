@@ -11,17 +11,17 @@
                <ul>
                  <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="sign.php">Sign In</a></li>
                  <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="404.php">Advertise on Smartshop</a></li>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category.php">SmartPhone</a></li>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category.php">SmartCam</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category.php?id=1">SmartPhone</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category.php?id=2">SmartCam</a></li>
                </ul>
              </div>
 
              <div class="col s12 l4 ">
                <ul>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category.php">SmartLaptop</a></li>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category.php">SmartWatch</a></li>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category.php">SmartSpeaker</a></li>
-                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category.php">SmartVR</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category.php?id=3">SmartLaptop</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category.php?id=4">SmartWatch</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category.php?id=5">SmartSpeaker</a></li>
+                 <li><a class="grey-text text-lighten-3 animated slideInUp wow" href="category.php?id=6">SmartVR</a></li>
                </ul>
              </div>
            </div>
