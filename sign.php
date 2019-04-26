@@ -7,7 +7,7 @@ if (!isset($_SESSION['logged_in'])) {
 }
 
 elseif($_SESSION['logged_in'] == 'True') {
-  header('Location: index');
+  header('Location: index.php');
 }
 
 else{

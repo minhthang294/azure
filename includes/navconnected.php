@@ -7,8 +7,8 @@
  <nav class="navblack">
    <div class="nav-wrapper nav-wrapper-2 container white">
    <ul class="left hide-on-med-and-down">
-     <li><a href="index" class="brand"></a></li>
-     <li><a href="index" class="dark-text">SmartShop</a></li>
+     <li><a href="index.php" class="brand"></a></li>
+     <li><a href="index.php" class="dark-text">SmartShop</a></li>
 
    </ul>
 
