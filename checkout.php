@@ -38,7 +38,7 @@ else {
 
 <div class="container checkout">
     <div class="card pay">
-      <form method="post" action="final">
+      <form method="post" action="final.php">
         <div class="row">
 
             <div class="input-field col s6">

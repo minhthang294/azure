@@ -42,10 +42,10 @@ else {
           <?php
            include 'db.php';
           //get products
-          $queryproduct = "SELECT product.name as 'name',
-          product.id as 'id', product.price as 'price',
-          category.name as 'category', command.id_user, command.statut,
-          command.quantity as 'quantity'
+          $queryproduct = "SELECT product.name as name,
+          product.id as id, product.price as price,
+          category.name as category, command.id_user, command.statut,
+          command.quantity as quantity
 FROM category, product, command
 WHERE command.id_produit = product.id AND product.id_category = category.id AND command.statut = 'ordered'";
           $result1 = pg_query($connection,$queryproduct);

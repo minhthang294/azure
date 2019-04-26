@@ -10,23 +10,23 @@
     include 'db.php';
 
     $querycmd ="SELECT product.id,
-                       product.name as 'product',
-                       product.price as 'price',
+                       product.name as product,
+                       product.price as price,
 
-                       command.id as 'idcmd',
+                       command.id as idcmd,
                        command.id_produit,
-                       command.quantity as 'quantity',
+                       command.quantity as quantity,
                        command.statut,
-                       command.id_user as 'iduser',
+                       command.id_user as iduser,
 
                        users.id
 
                        FROM product, command, users
                        WHERE product.id = command.id_produit AND users.id = command.id_user
                        AND command.id_user = '{$_SESSION['id']}' AND command.statut = 'ordered'";
-    $resultcmd = $connection->query($querycmd);
-    if($resultcmd->num_rows > 0){
-      while ($rowcmd = $resultcmd->fetch_assoc()) {
+    $resultcmd = pg_query($connection,$querycmd);
+    if(pg_num_rows($resultcmd) > 0){
+      while ($rowcmd = pg_fetch_assoc($resultcmd)) {
            $productcmd = $rowcmd['product'];
            $quantitycmd = $rowcmd['quantity'];
            $pricecmd = $rowcmd['price'];
@@ -62,10 +62,10 @@
                                                                '$countrycmd',
                                                                '$citycmd',
                                                                'ready')";
-    $resultdetails = $connection->query($query_details);
+    $resultdetails = pg_query($connection,$query_details);
 
     $querypay = "UPDATE command SET statut = 'paid' WHERE id_user = '{$_SESSION['id']}' AND statut = 'ordered'";
-    $resultpay = mysqli_query($connection, $querypay);
+    $resultpay = pg_query($connection, $querypay);
   }
 }
     unset($_SESSION["item"]);
