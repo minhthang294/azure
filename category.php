@@ -21,7 +21,7 @@ $id_category =$_GET['id'];
       <nav>
         <div class="nav-wrapper">
           <div class="col s12">
-            <a href="index" class="breadcrumb">Home</a>
+            <a href="index.php" class="breadcrumb">Home</a>
             <a href="category.php?id=<?= $id_category; ?>" class="breadcrumb">Category</a>
           </div>
         </div>
