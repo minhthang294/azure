@@ -86,7 +86,7 @@ if ($_SESSION['role'] !== 'admin') {
             }
 
             //get total ordered commands
-            $queryorder = "SELECT count(id) as total, statut FROM command WHERE statut = 'ordered'";
+            $queryorder = "SELECT count(id) as total FROM command WHERE statut = 'ordered'";
             $resultorder = pg_query($connection,$queryorder);
 
             if(pg_num_rows($resultorder) > 0) {
@@ -96,7 +96,7 @@ if ($_SESSION['role'] !== 'admin') {
             }
 
             //get total paid commands
-            $querypaid = "SELECT count(id) as total, statut FROM command WHERE statut = 'paid'";
+            $querypaid = "SELECT count(id) as total FROM command WHERE statut = 'paid'";
             $resultpaid = pg_query($connection,$querypaid);
 
             if(pg_num_rows($resultpaid) > 0) {
