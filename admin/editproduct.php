@@ -54,7 +54,7 @@ command.id_user as user
 
 FROM product, command
 WHERE product.id = command.id_produit
-GROUP BY command.id
+GROUP BY command.id, product.id, product.name, product.price, command.statut, command.id_produit, command.id_produit, command.quantity, command.id_user
 ORDER BY SUM(command.id_user) DESC ";
 $resultfirst = pg_query($connection,$queryfirst);
 if (pg_num_rows($resultfirst) > 0) {
