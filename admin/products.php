@@ -29,16 +29,16 @@ if ($_SESSION['role'] !== 'admin') {
            include '../db.php';
             // get stock
             $querystock = "SELECT
-            product.id_category as 'name',
-            count(product.id_category) as 'total',
+            product.id_category as name,
+            count(product.id_category) as total,
 
-            category.id as 'id_cat',
-            category.name as 'name',
-            category.icon as 'icon'
+            category.id as id_cat,
+            category.name as name,
+            category.icon as icon
 
             FROM product, category
             WHERE product.id_category = category.id
-            GROUP BY category.id";
+            GROUP BY category.id, product.id_category, category.name, category.icon";
             $resultstock = pg_query($connection,$querystock);
             if (pg_num_rows($resultstock) > 0) {
               while($rowstock = pg_fetch_assoc($resultstock)) {

@@ -31,7 +31,7 @@ if ($_SESSION['role'] !== 'admin') {
              </div>
              <div class="card-stacked">
               <div class="card-content">
-                <p>Products & Commands</p>
+                <p>Commands</p>
               </div>
                <div class="card-action">
                  <a href="infoproduct.php" class="blue-text">Learn more</a>
