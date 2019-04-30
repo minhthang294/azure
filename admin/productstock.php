@@ -31,7 +31,7 @@ $category = $_GET['id'];
             // get stock
             $query = "SELECT * FROM product WHERE id_category = '$category'";
             $result = pg_query($connection,$query);
-            if ($result->num_rows > 0) {
+            if (pg_num_rows($result) > 0) {
               while($rows = pg_fetch_assoc($result)) {
                $id_product = $rows['id'];
                $name = $rows['name'];
