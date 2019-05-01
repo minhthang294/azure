@@ -39,13 +39,13 @@ if ($_SESSION['role'] !== 'admin') {
           command.statut,
           command.id_produit,
  
-          category.name as name,
+          product.name as name,
           category.id
  
           FROM product, command, category
           WHERE product.id = command.id_produit
           AND command.statut = 'paid' AND category.id = product.id_category
-          GROUP BY category.id, product.id, product.id_category, command.statut, command.id_produit, category.name";
+          GROUP BY category.id, product.id, product.id_category, command.statut, command.id_produit, product.name";
          $resultfirst = pg_query($connection,$queryfirst);
          if (pg_num_rows($resultfirst) > 0) {
            // output data of each row
