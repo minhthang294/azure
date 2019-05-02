@@ -46,7 +46,7 @@ $category = $_GET['id'];
                    <span class="card-title grey-text"><?= $name; ?></span>
                  </div>
                  <div class="card-content">
-                      <h5 class="white-text">$ <?= $price; ?></h5>
+                      <h5 class="white-text"><?= $price; ?></h5>
                       <a class="blue-text" href="deleteproduct.php?id=<?= $id_product;?>">Delete</a>
                  </div>
              </div>
