@@ -42,19 +42,19 @@ require $nav; ?>
 
     $queryfirst = "SELECT
 
-   product.id as 'id',
-   product.name as 'name',
-   product.price as 'price',
-   product.thumbnail as 'thumbnail',
-
-    SUM(command.quantity) as 'total',
-    command.statut,
-    command.id_produit
-
-    FROM product, command
-    WHERE product.id = command.id_produit AND command.statut = 'paid'
-    GROUP BY product.id
-    ORDER BY SUM(command.quantity) DESC LIMIT 3";
+    product.id as id,
+    product.name as name,
+    product.price as price,
+    product.thumbnail as thumbnail,
+ 
+     SUM(command.quantity) as total,
+     command.statut,
+     command.id_produit
+ 
+     FROM product, command
+     WHERE product.id = command.id_produit AND command.statut = 'paid'
+     GROUP BY product.id, product.name, product.price, product.thumbnail, command.statut, command.id_produit
+     ORDER BY SUM(command.quantity) DESC LIMIT 3";
     $resultfirst = pg_query($connection,$queryfirst);
     if (pg_num_rows($resultfirst) > 0) {
       // output data of each row
